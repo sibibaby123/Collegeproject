@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% for cat in links %}
+{% block metadescription %}
+   {{cat.desc|truncatewords:155}}
+{% endblock %}
+{% block title %}
+   {{cat.name}}
+{% endblock %}
+{% endfor %}
+{% block content %}
+{% for link in links %}
+  <div class="row my_prod_row_class">
+    <div class = "mx_auto">
+      <p><a href ="{% url 'authentication:allCourse' %}">Home</a>|{{link.name}}</a></p>
+    </div>
+  </div>
+  <div>
+      <div>
+      <div>
+        <img src = "{{link.image.url}}" alt="{{link.name}}"  height="750px;" width="750px;">
+    </div>
+  </div>
+  </div>
+  <div>
+    <div>
+      <h2>{{link.name}}</h2>
+      <p>{{link.description}}</p>
+    </div>
+  </div>
+  {% endfor  %}
+ {% endblock %}
